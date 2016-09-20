@@ -1,0 +1,9 @@
+h1 Found results:
+.row
+  - devices.each do |device|
+    = link_to '#', class: 'device-show-link', data: { id: device[:model_id] } do
+      .col-sm-6.col-md-3
+        .thumbnail
+          = image_tag(device[:pic_url])
+          .caption
+            h5.text-center = device[:full_name]
