@@ -1,5 +1,9 @@
 $(document).ready ->
 
+  window.emptySections = () ->
+    $('.search-results').empty()
+    $('.show-device').empty()
+
   setDropDownWidth = () ->
     width = $('#device-search-input').width()
     $('.tt-dataset').width(width)
@@ -14,7 +18,6 @@ $(document).ready ->
     $.ajax
       url: '/devices'
       data: { query: query }
-      dataType: 'script'
 
   $(document).on 'click', '.device-show-link', (e) ->
     e.preventDefault()
@@ -31,7 +34,6 @@ $(document).ready ->
   sendShowDevice = (deviceId) ->
     $.ajax
       url: '/devices/' + deviceId
-      dataType: 'html'
 
   source = new Bloodhound
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value')

@@ -1,3 +1,2 @@
-$('.search-results').empty();
-$('.show-device').empty();
+window.emptySections();
 $('.show-device').html("<%= escape_javascript(render(partial: 'show', locals: {device: @device}))%>");
