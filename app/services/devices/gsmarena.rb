@@ -3,7 +3,7 @@ module Devices
     def initialize(id)
       @id = id
       @device = Search.new(id: @id).find_by_id
-      @parsed_data = CellphoneDataScrapper.new(@id).scrap
+      @parsed_data = DeviceDataScrapper.new(@id).scrap
     end
 
     def id

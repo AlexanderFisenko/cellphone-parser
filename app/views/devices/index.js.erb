@@ -1,0 +1,3 @@
+$('.search-results').empty();
+$('.show-device').empty();
+$('.search-results').html("<%= escape_javascript(render(partial: 'search_results', locals: {devices: @devices}))%>");

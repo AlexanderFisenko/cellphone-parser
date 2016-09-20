@@ -4,10 +4,6 @@ $(document).ready ->
     width = $('#device-search-input').width()
     $('.tt-dataset').width(width)
 
-  emptySections = () ->
-    $('.search-results').empty()
-    $('.show-device').empty()
-
   $(document).on 'click', '#show-results-btn', (e) ->
     query = $('#search-input').val()
     if query.length > 0
@@ -16,14 +12,9 @@ $(document).ready ->
 
   sendSearchForm = (query) ->
     $.ajax
-      url: '/search'
+      url: '/devices'
       data: { query: query }
-      dataType: 'html'
-      success: (response) ->
-        emptySections()
-        $('.search-results').html(response)
-      error: (xhr, status, error) ->
-        console.error "#{status} --> #{error}"
+      dataType: 'script'
 
   $(document).on 'click', '.device-show-link', (e) ->
     e.preventDefault()
@@ -39,20 +30,14 @@ $(document).ready ->
 
   sendShowDevice = (deviceId) ->
     $.ajax
-      url: '/show_device'
-      data: { device_id: deviceId }
+      url: '/devices/' + deviceId
       dataType: 'html'
-      success: (response) ->
-        emptySections()
-        $('.show-device').html(response)
-      error: (xhr, status, error) ->
-        console.error "#{status} --> #{error}"
 
   source = new Bloodhound
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value')
     queryTokenizer: Bloodhound.tokenizers.whitespace
     remote:
-      url: "/search?query=%QUERY&typeahead=true"
+      url: "/devices?query=%QUERY&typeahead=true"
       wildcard: "%QUERY"
       rateLimitWait: 600
 
