@@ -1,0 +1,21 @@
+.row
+  h2.text-center = device.full_name
+  .col-md-3
+    = image_tag(device.pic_url)
+    .device-specs-brief
+      - device.parsed_data[:specs_brief].each do |name, value|
+        - next if value.blank?
+        p = value
+
+  .col-md-6
+    #specs-list
+      - device.parsed_data[:specs_detailed].each do |title, specs|
+        table cellspacing="0"
+          tbody
+            - specs.each_with_index do |(spec_title, spec_value), index|
+              tr.tr-hover
+                - if index.zero?
+                  th rowspan="#{specs.size}" scope="row" = title
+                td.ttl = show_title(spec_title)
+                td.nfo
+                  = spec_value

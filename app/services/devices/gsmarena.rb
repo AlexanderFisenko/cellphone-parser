@@ -2,8 +2,8 @@ module Devices
   class Gsmarena < Base
     def initialize(id)
       @id = id
-      @device = Search.new(id: @id).find_by_id
-      @parsed_data = DeviceDataScrapper.new(@id).scrap
+      @device = Search.find_by_id(@id)
+      @parsed_data = DeviceDataScrapper.new(@id).scrape
     end
 
     def id

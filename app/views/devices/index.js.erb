@@ -1,2 +1,3 @@
 window.emptySections();
-$('.search-results').html("<%= escape_javascript(render(partial: 'search_results', locals: {devices: @devices}))%>");
+$('.search-results').html("<%= escape_javascript(render(partial: 'devices', locals: {devices: @devices}))%>");
+window.Preloader.hide($('.show-results'));

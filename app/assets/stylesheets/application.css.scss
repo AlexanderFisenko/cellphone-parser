@@ -81,15 +81,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
 #specs-list hr {
   margin: 20px 0;
 }
@@ -205,4 +196,13 @@
 
 #specs-list .tr-hover .nfo a {
   top: 3px;
+}
+
+.preloader {
+  position: absolute;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  width: 70px;
+  height: 70px;
+  background: url('/preloader.gif') no-repeat 50% 50%;
 }

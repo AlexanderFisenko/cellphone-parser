@@ -15,23 +15,25 @@ $(document).ready ->
     return false
 
   sendSearchForm = (query) ->
+    window.Preloader.show($('.show-results'))
     $.ajax
       url: '/devices'
       data: { query: query }
 
   $(document).on 'click', '.device-show-link', (e) ->
     e.preventDefault()
-    $('body, html').animate({ scrollTop: 0 }, 800)
+    window.scrollTo(0, 0)
     deviceId = $(this).data('id')
     sendShowDevice(deviceId)
 
   $(document).on 'click', '.tt-suggestion', (e) ->
     e.preventDefault()
-    $('body, html').animate({ scrollTop: 0 }, 800)
+    window.scrollTo(0, 0)
     deviceId = $(this).children('a').data('id')
     sendShowDevice(deviceId)
 
   sendShowDevice = (deviceId) ->
+    window.Preloader.show($('.show-device'))
     $.ajax
       url: '/devices/' + deviceId
 

@@ -4,7 +4,7 @@ class DevicesController < ApplicationController
     if request.xhr?
       query = params[:query]
 
-      @devices = Search.new(query: query).find_by_query
+      @devices = Search.find_by_query(query)
       if params[:typeahead]
         @devices = @devices.map { |device| { id: device[:model_id], name: device[:full_name], img: device[:pic_url] } }
         @devices = @devices.take(12)

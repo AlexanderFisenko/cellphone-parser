@@ -1,2 +1,3 @@
 window.emptySections();
-$('.show-device').html("<%= escape_javascript(render(partial: 'show', locals: {device: @device}))%>");
+$('.show-device').html("<%= escape_javascript(render(partial: 'device', locals: {device: @device}))%>");
+window.Preloader.hide($('.show-device'));
